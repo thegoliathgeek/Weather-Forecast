@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import * as request from 'request';
 
 interface State {
     data: {}
@@ -27,7 +26,8 @@ const callApi: any = (ob: any) => {
 };
 
 export default class Home extends Component {
-    componentDidMount(): void {
+    constructor(props: any) {
+        super(props);
         callApi(this);
     }
 
@@ -70,26 +70,28 @@ export default class Home extends Component {
     };
 
     render() {
-        // @ts-ignore
         return (<div>
             <div>
-                <h3>Current</h3>
-                <div>
-                    {
-                        this.state.data ?
-                            <div>
-                                <p>{this.state.data.latitude}</p>
-                                <p>{this.state.data.longitude}</p>
-                                <h2>Hourly</h2>
-                                {
-                                    this.state.data.hourly.data.map((val: any, key1) => {
-                                        return <p key={key1}>{convertToDate(val.time)}</p>
-                                    })
-                                }
-                            </div>
-                            : null
-                    }
-                </div>
+                {
+                    this.state.data ?
+                        <div>
+                            <h2 className="border-2">Current</h2>
+                            <p>Time : {convertToDate(this.state.data.currently.time)}</p>
+                            <p>{this.state.data.latitude}</p>
+                            <p>{this.state.data.longitude}</p>
+                            <h2>Hourly</h2>
+                            {
+                                this.state.data.hourly.data.map((val: any, key1) => {
+                                    return <div key={key1}>
+
+                                        <p>{convertToDate(val.time)}</p>
+                                        <p>Humidity: {val.humidity}</p>
+                                    </div>
+                                })
+                            }
+                        </div>
+                        : null
+                }
             </div>
         </div>);
     }
