@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-
+import  './Home.css';
 const convertToDate: any = (epoch: number,months: any) => {
     const d = new Date(0);
     d.setUTCSeconds(epoch);
-    console.log(d.getMonth());
     return d.getDate().toString()+" "+months[d.getMonth()]+" "+d.getFullYear();
 };
 
@@ -28,7 +27,6 @@ interface Mon {
 export default class Home extends Component<{months:any}> {
     constructor(props: any) {
         super(props);
-        console.log("Months : "+this.props.months);
         callApi(this);
     }
     public static propTypes = {};
@@ -84,15 +82,27 @@ export default class Home extends Component<{months:any}> {
                             <p>{this.state.data.latitude}</p>
                             <p>{this.state.data.longitude}</p>
                             <h2 style={{'textAlign':'center'}} className="alert alert-primary">Hourly</h2>
+                            <div className='table-responsive'>
+                                <table className='table table-bordered'>
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Humidity</th>
+                                </tr>
+                                </thead>
+                                    <tbody>
                             {
                                 this.state.data.hourly.data.map((val: any, key1) => {
-                                    return <div key={key1}>
+                                    return <tr key={key1}>
 
-                                        <p>{convertToDate(val.time,this.props.months)}</p>
-                                        <p>Humidity: {val.humidity}</p>
-                                    </div>
+                                        <td>{convertToDate(val.time,this.props.months)}</td>
+                                        <td>{val.humidity}</td>
+                                    </tr>
                                 })
                             }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         : null
                 }
