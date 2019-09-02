@@ -3,7 +3,7 @@ import  './Home.css';
 const convertToDate: any = (epoch: number,months: any) => {
     const d = new Date(0);
     d.setUTCSeconds(epoch);
-    return d.getDate().toString()+" "+months[d.getMonth()]+" "+d.getFullYear();
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()} : (${d.getHours()} hrs)`;
 };
 
 const callApi: any = (ob: any) => {
@@ -20,11 +20,8 @@ const callApi: any = (ob: any) => {
         console.log('Fetch Error : ' + err.message);
     });
 };
-interface Mon {
-    months: any
-}
 
-export default class Home extends Component<{months:any}> {
+export default class Home extends Component<{months:Array<string>}> {
     constructor(props: any) {
         super(props);
         callApi(this);
@@ -77,10 +74,28 @@ export default class Home extends Component<{months:any}> {
                         <div>
                             <div>
                             <h2 style={{'textAlign':'center'}} className="alert alert-primary">Current</h2>
+                                <div className='table-responsive'>
+                                    <table className='table table-bordered'>
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Humidity</th>
+                                            <th>Summary</th>
+                                            <th>Temperature</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>{convertToDate(this.state.data.currently.time,this.props.months)}</td>
+                                            <td>{this.state.data.currently.humidity}</td>
+                                            <td>{this.state.data.currently.summary}</td>
+                                            <td>{this.state.data.currently.temperature}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
                             </div>
-                                <p>Time : {convertToDate(this.state.data.currently.time,this.props.months)}</p>
-                            <p>{this.state.data.latitude}</p>
-                            <p>{this.state.data.longitude}</p>
                             <h2 style={{'textAlign':'center'}} className="alert alert-primary">Hourly</h2>
                             <div className='table-responsive'>
                                 <table className='table table-bordered'>
@@ -88,6 +103,8 @@ export default class Home extends Component<{months:any}> {
                                 <tr>
                                     <th>Date</th>
                                     <th>Humidity</th>
+                                    <th>Summary</th>
+                                    <th>Temperature</th>
                                 </tr>
                                 </thead>
                                     <tbody>
@@ -97,6 +114,8 @@ export default class Home extends Component<{months:any}> {
 
                                         <td>{convertToDate(val.time,this.props.months)}</td>
                                         <td>{val.humidity}</td>
+                                        <td>{val.summary}</td>
+                                        <td>{val.temperature}</td>
                                     </tr>
                                 })
                             }
