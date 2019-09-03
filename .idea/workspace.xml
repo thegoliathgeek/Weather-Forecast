@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ea6f898-6073-429e-bcd0-b0e594569ba2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Views/View.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/View.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/View.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/View.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/View.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/View.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +82,9 @@
       <option name="presentableId" value="Default" />
       <updated>1567368765984</updated>
       <workItem from="1567368767939" duration="713000" />
-      <workItem from="1567399089978" duration="5775000" />
+      <workItem from="1567399089978" duration="8418000" />
+      <workItem from="1567447426815" duration="3337000" />
+      <workItem from="1567532771002" duration="255000" />
     </task>
     <task id="LOCAL-00002" summary="Fixed small bugs">
       <created>1567369472694</created>
@@ -103,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567402507912</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Temperature">
+      <created>1567407845448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567407845448</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +138,7 @@
     <MESSAGE value="Fixed small bugs" />
     <MESSAGE value="Format date" />
     <MESSAGE value="Table added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Table added" />
+    <MESSAGE value="Temperature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Temperature" />
   </component>
 </project>

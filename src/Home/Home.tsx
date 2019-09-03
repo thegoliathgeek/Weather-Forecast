@@ -1,5 +1,7 @@
+
 import React, {Component} from "react";
 import  './Home.css';
+
 const convertToDate: any = (epoch: number,months: any) => {
     const d = new Date(0);
     d.setUTCSeconds(epoch);
@@ -33,25 +35,25 @@ export default class Home extends Component<{months:Array<string>}> {
             latitude: '',
             longitude: '',
             currently: {
-                "time": 1567362776,
-                "summary": "Overcast",
-                "icon": "cloudy",
+                "time": 0,
+                "summary": "",
+                "icon": "",
                 "nearestStormDistance": 0,
-                "precipIntensity": 0.0002,
-                "precipProbability": 0.05,
-                "precipType": "rain",
-                "temperature": 70.83,
-                "apparentTemperature": 71.87,
-                "dewPoint": 67.95,
-                "humidity": 0.91,
-                "pressure": 1009.35,
-                "windSpeed": 10.03,
-                "windGust": 22.56,
-                "windBearing": 239,
-                "cloudCover": 1,
+                "precipIntensity": 0,
+                "precipProbability": 0,
+                "precipType": "",
+                "temperature": 0,
+                "apparentTemperature": 0,
+                "dewPoint": 0,
+                "humidity": 0,
+                "pressure": 0,
+                "windSpeed": 0,
+                "windGust": 0,
+                "windBearing": 0,
+                "cloudCover": 0,
                 "uvIndex": 0,
-                "visibility": 10,
-                "ozone": 261.8
+                "visibility": 0,
+                "ozone": 0
             },
             "hourly": {
                 "summary": "",
@@ -89,7 +91,7 @@ export default class Home extends Component<{months:Array<string>}> {
                                             <td>{convertToDate(this.state.data.currently.time,this.props.months)}</td>
                                             <td>{this.state.data.currently.humidity}</td>
                                             <td>{this.state.data.currently.summary}</td>
-                                            <td>{this.state.data.currently.temperature}</td>
+                                            <td>{this.state.data.currently.temperature} &#8457;</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -115,7 +117,7 @@ export default class Home extends Component<{months:Array<string>}> {
                                         <td>{convertToDate(val.time,this.props.months)}</td>
                                         <td>{val.humidity}</td>
                                         <td>{val.summary}</td>
-                                        <td>{val.temperature}</td>
+                                        <td>{val.temperature} &#x2109;</td>
                                     </tr>
                                 })
                             }

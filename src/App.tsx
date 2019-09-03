@@ -22,7 +22,7 @@ const App: React.FC = () => {
         }).catch(eer=>{
             console.log(eer.message);
         });
-    },[0]);
+    },[]);
   return (
    <Router>
        <Route exact path='/' component={()=> <Home months={months1}> </Home>}/>
