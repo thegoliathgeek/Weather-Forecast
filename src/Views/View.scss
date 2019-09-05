@@ -1,4 +1,44 @@
-$grren: green;
-h1{
-  color: $grren;
+$purp : #311847;
+$ligtBlue: #3EB9E6;
+
+
+.containerMine{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($purp), to($ligtBlue));
+  background-image: -webkit-linear-gradient(top, $purp, $ligtBlue);
+  background-image: -moz-linear-gradient(top, $purp, $ligtBlue);
+  background-image: linear-gradient(to bottom, $purp, $ligtBlue);
+}
+
+
+.weather-container{
+
+  animation-name: upIt;
+  animation-duration: 2s;
+
+  .data-cont{
+    color: white;
+    font-size: 30px;
+  }
+
+
+}
+
+
+
+@keyframes upIt {
+  0%{
+   bottom: -320px;
+    opacity: 0;
+}
+
+  100%{
+      bottom: 0;
+    opacity: 1;
+  }
+
 }
