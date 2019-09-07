@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ea6f898-6073-429e-bcd0-b0e594569ba2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/View.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/View.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/View.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/View.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +82,11 @@
       <workItem from="1567447426815" duration="3337000" />
       <workItem from="1567532771002" duration="857000" />
       <workItem from="1567686933128" duration="1854000" />
-      <workItem from="1567700856675" duration="8968000" />
+      <workItem from="1567700856675" duration="9066000" />
+      <workItem from="1567783959391" duration="2075000" />
+      <workItem from="1567875560327" duration="164000" />
+      <workItem from="1567876986469" duration="159000" />
+      <workItem from="1567877227527" duration="2353000" />
     </task>
     <task id="LOCAL-00002" summary="Fixed small bugs">
       <created>1567369472694</created>
@@ -125,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567707286256</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="getArea name">
+      <created>1567710568627</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1567710568627</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +164,7 @@
     <MESSAGE value="Temperature" />
     <MESSAGE value="View Props" />
     <MESSAGE value="Gradient BackGround" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gradient BackGround" />
+    <MESSAGE value="getArea name" />
+    <option name="LAST_COMMIT_MESSAGE" value="getArea name" />
   </component>
 </project>

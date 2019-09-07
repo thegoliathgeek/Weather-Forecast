@@ -1,30 +1,24 @@
 import React, {Component} from "react";
 import './View.scss';
 
-// 602dc18b5b6c4ca2928e944b4d35fd6f
-// https://api.opencagedata.com/geocode/v1/json?q=13.339168+77.113998&key=602dc18b5b6c4ca2928e944b4d35fd6f
 
-//TODO Fix getNames
-const getNames: any = (lat: any="13.339168", long: any="77.113998", ob: any) => {
-     return fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=602dc18b5b6c4ca2928e944b4d35fd6f`,{
-         method: 'GET'
-     }).then((e) => {
-         return e.json().then(rt => {
-            console.log(rt.results[0].components.county);
-            ob.setState({name: rt.results[0].components.county});
-            return {name: rt.results[0].components.county};
-        }).catch(eee => {
-            console.log("Json Error");
-            console.log(eee.message);
-        })
-    }).catch((err) => {
-        console.log("Fetch Error");
-        console.log(err.message);
-    });
+const getTimeZone:any =(ob:any,lat:number,long:number)=>{
+  const url:string =   `https://cors-anywhere.herokuapp.com/http://api.timezonedb.com/v2.1/get-time-zone?key=EP2XKFDTYLWD&format=json&by=position&lat=${lat}&lng=${long}`;
+   fetch(url).then(res=>{
+       res.json().then(jsn=>{
+          console.log(jsn.zoneName);
+          ob.setState({name: jsn.zoneName});
+      }).catch(jsnErr=>{
+            console.log("JSON Error Time Zone : "+jsnErr.message);
+      });
+  }).catch(err=>{
+      console.log('Time zone fetch error : '+err.message);
+  });
+
 };
+const callApi: any = (ob: any,lat: number=13.339168,long:number=77.113998) => {
 
-const callApi: any = (ob: any) => {
-    return fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/ded211a3d6cf32db932883277e961ab4/13.339168,77.113998').then(res => {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/ded211a3d6cf32db932883277e961ab4/${lat},${long}`).then(res => {
         return res.json().then(jsn => {
             // @ts-ignore
             ob.setState({data: jsn});
@@ -37,19 +31,11 @@ const callApi: any = (ob: any) => {
     });
 };
 
-
 export default class View extends Component<{ months: Array<string>, prevData: any }> {
-    constructor(props: any) {
-        super(props);
-    }
-    componentDidMount(): void {
-        callApi(this);
-
-        getNames(this);
-    }
-
     state = {
         name:"",
+        latitude1:0,
+        longitude2:0,
         data: {
             latitude: '',
             longitude: '',
@@ -86,16 +72,46 @@ export default class View extends Component<{ months: Array<string>, prevData: a
             }
         }
     };
+    constructor(props: any) {
+        super(props);
+        callApi(this);
+
+    }
+    componentDidMount(): void {
+        setTimeout(()=>{
+            getTimeZone(this,this.state.data.latitude,this.state.data.longitude);
+        },2000);
+    }
+
+    onChangeLat(event: React.FormEvent<HTMLInputElement>){
+        event.preventDefault();
+        this.setState({latitude1: event.currentTarget.value});
+    }
+
+    onChangeLong(event: React.FormEvent<HTMLInputElement>){
+        event.preventDefault();
+        this.setState({longitude2: event.currentTarget.value});
+    }
+
 
     render() {
         return (<div>
+
             <div className='containerMine'>
+                <div>
+                    <label htmlFor="LAT">Latitude</label>
+                    <input id="LAT" type="text" onChange={this.onChangeLat}/>
+                    <label htmlFor="LONG">Longitude</label>
+                    <input id="LONG" type="text" onChange={this.onChangeLong}/>
+                    <button onClick={()=> callApi(this.state.latitude1,this.state.longitude2)}>Submit</button>
+                </div>
                 <div className='weather-container'>
                     <div className='data-cont'>
                         <p>Current temperature: <span>{this.state.data.currently.temperature} &#x2109;</span></p>
-                        <p>{this.state.name}</p>
+                        {this.state.name}
                     </div>
                 </div>
+
             </div>
         </div>);
     }
